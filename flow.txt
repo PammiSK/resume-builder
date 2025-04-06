@@ -1,0 +1,83 @@
+i get the feeling that the flow is messed up:
+can you please help me fix this:
+
+1 keywords_prompt = f"""Hi, can you identify the top 5-10 keywords and skills from this job description.
+It's for {position}: {job_description}"""
+
+2 role_prompt = f"""You are an expert resume writer with over 20 years of experience working with job seekers
+trying to land a role in {industry}. Highlight the 3 most important responsibilities in this job description:
+{job_description}"""
+
+3 resume_prompt = f"""
+Great! Based on these 3 most important responsibilities from the job description:
+{role_result}
+And considering these enhancement points:
+{enhancer}
+Please tailor my resume specifically for the position of {position} at {company}. 
+Do not invent or add untrue information. Here is my original resume:
+{my_resume}
+"""
+
+4 difference_prompt = f"""List out the differences between my original resume and your suggested draft
+in table format with 2 columns: Original and Updated. Be specific and list out what was changed,
+down to the exact wording.
+Original Resume: {my_resume}
+Updated Resume: {resume_result}
+"""
+
+5 resume_improve_prompt = f"""Here's my tailored resume draft:
+{resume_result}
+Considering the job description for {position} at {company}:
+{job_description}
+Can you clearly outline areas of improvement and
+suggest how I can better tailor my resume to this specific role?"""
+
+6 redo_resume_prompt = f"""Taking into consideration these improvement suggestions:
+{resume_improve_result}
+and these enhancement points:
+{enhancer}
+Based on the original job description:
+{job_description}
+and my original resume:
+{my_resume}
+Please provide an improved and finalized version of the tailored resume:
+{resume_result}
+Do not invent or add untrue information.
+"""
+
+7 resume_summary_prompt = f"""Write a professional resume summary tailored specifically to the {position} role at {company}.
+Highlight the following experience: {experience}.
+Demonstrate clearly how this background addresses major company challenges such as {role_result}.
+Include this notable accomplishment: {accomplishment}.
+Conclude by emphasizing expertise in {expertise}.
+Incorporate relevant keywords from the job description.
+Constraints: Max 5 sentences, maximum 60 words, no personal pronouns ("I", "my", etc.), and do not fabricate information.
+"""
+
+8 bullet_point_init_prompt = f"""You are an expert resume writer with over 20 years of experience.
+Here's a bullet point I have in my resume. No action needed for now. If you understand, please respond with "yes"
+Here is my bullet point: {bullet_point}"""
+
+9 bullet_point_make_prompt = """Re-write this bullet point using this structure: "I accomplished X by the measure Y
+that resulted in Z." For example, "I lowered hospital mortality rate by 10% by educating nurses in new protocols
+which translates to 200 lives saved per year" Use compelling language and keep the bullet point within 50 words."""
+
+10 quantify_prompt = """I don't know how my sucess was measured. Please give me suggestions where and how
+I can add quantifiable and measurable metrics in this bullet point"""
+
+11 bullet_point_convert_prompt = f"""Can you help me develop 4-5 bullet points on my resume for my position as
+{current_role}? I'd like them to be impactful and include relevant keywords. Here's what I did: {what_I_did}"""
+
+12 hook_prompt = f"""You are currently working as a {current_role} in the {current_industry} industry
+and you are applying for this {position} at {company}. Write an attention grabbing hook for your
+cover letter that highlights your experience and qualifications in a way that shows you empathise 
+and can sucessfully take on the challenges of the {position} role.: {role_result}
+Consider incorporating specific examples of how you've tackled these challenges in your past work and
+explore creative ways to express your enthusiasm for the opportunity. Keep your hook within 15 words."""
+
+13 cover_letter_prompt = f"""You are writing the cover letter for the {position} at {company}.
+Here's what you have so far:  Finish writing the cover letter based on:
+{hook_result}
+{redo_resume_result}
+{job_description}
+and keep it within 250 words. . Do not fabricate information."""
