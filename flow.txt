@@ -45,7 +45,7 @@ Please provide an improved and finalized version of the tailored resume:
 Do not invent or add untrue information.
 """
 
-7 resume_summary_prompt = f"""Write a professional resume summary tailored specifically to the {position} role at {company}.
+7? resume_summary_prompt = f"""Write a professional resume summary tailored specifically to the {position} role at {company}.
 Highlight the following experience: {experience}.
 Demonstrate clearly how this background addresses major company challenges such as {role_result}.
 Include this notable accomplishment: {accomplishment}.
